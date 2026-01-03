@@ -7,6 +7,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import API from '../../utils/api';
 
 const Navbar2 = () =>
 {
@@ -44,7 +45,7 @@ const Navbar2 = () =>
 
     const searchAPICall = async () =>
     {
-        await axios.get( `http://localhost:4000/api/auth/findUser?query=${ debouncedTerm }`, { withCredentials: true } )
+        await API.get( `/api/auth/findUser?query=${ debouncedTerm }`, { withCredentials: true } )
             .then( res =>
             {
                 console.log( res );
@@ -60,7 +61,7 @@ const Navbar2 = () =>
     };
 
 const fetchNotification = async()=>{
-    await axios.get('http://localhost:4000/api/notification/activeNotification',{withCredentials:true})
+    await API.get('/api/notification/activeNotification',{withCredentials:true})
     .then(res=>{
         var count =res.data.count;
         setNotificationCount(count)

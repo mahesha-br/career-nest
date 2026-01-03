@@ -6,6 +6,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ImageIcon from '@mui/icons-material/Image';
 import Advertisement from '../Advertisement/advertisement';
 import axios from 'axios';
+import API from '../../utils/api';
 
 const Messages = () =>
 {
@@ -50,7 +51,7 @@ const Messages = () =>
 
     const fetchMessages = async () =>
     {
-        await axios.get( `http://localhost:4000/api/message/${ activeConvId }`, { withCredentials: true } )
+        await API.get( `/api/message/${ activeConvId }`, { withCredentials: true } )
             .then( res =>
             {
                 console.log( res );
@@ -66,7 +67,7 @@ const Messages = () =>
     {
         try
         {
-            const res = await axios.get( 'http://localhost:4000/api/conversation/get-conversation', {
+            const res = await API.get( '/api/conversation/get-conversation', {
                 withCredentials: true
             } );
             setConversations( res.data.conversations );
@@ -91,7 +92,7 @@ const Messages = () =>
 
     const handleSendMessage = async () =>
     {
-        await axios.post(`http://localhost:4000/api/message`,{conversation:activeConvId,message:messageText,picture:imageLink},{withCredentials:true})
+        await API.post(`/api/message`,{conversation:activeConvId,message:messageText,picture:imageLink},{withCredentials:true})
         .then(res=>{
             setMessageText("")
             console.log(res)
@@ -109,7 +110,7 @@ const Messages = () =>
 
         // try
         // {
-        //     await axios.post( "http://localhost:4000/api/conversation/add-conversation", {
+        //     await API.post( "/api/conversation/add-conversation", {
         //         receiverId: receiver._id, // ✅ fixed key
         //         message: newMessage
         //     }, {

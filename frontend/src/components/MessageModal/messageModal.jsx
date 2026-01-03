@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import API from '../../utils/api';
 
 const MessageModal = ( selfData, userData ) =>
 {
@@ -12,7 +13,7 @@ const MessageModal = ( selfData, userData ) =>
   const handleSendMessage = async () =>
   {
 
-    await axios.post( 'http://localhost:4000/api/conversation/add-conversation', { receiverId: id, message }, { withCredentials: true } )
+    await API.post( '/api/conversation/add-conversation', { receiverId: id, message }, { withCredentials: true } )
       .then( res =>
       {
 

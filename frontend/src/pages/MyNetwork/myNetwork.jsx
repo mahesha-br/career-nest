@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ProfileCard from '../../components/ProfileCard/profileCard';
 import axios from 'axios';
+import API from '../../utils/api';
 
 const MyNetwork = () =>
 {
@@ -20,7 +21,7 @@ const MyNetwork = () =>
 
     const fetchFriendList = async () =>
     {
-        await axios.get( 'http://localhost:4000/api/auth/friendsList', { withCredentials: true } )
+        await API.get( 'API/api/auth/friendsList', { withCredentials: true } )
             .then( ( res ) =>
             {
                 console.log( res );
@@ -34,7 +35,7 @@ const MyNetwork = () =>
 
     const fetchPendingRequest = async () =>
     {
-        await axios.get( 'http://localhost:4000/api/auth/pendingFriendsList', { withCredentials: true } )
+        await API.get( '/api/auth/pendingFriendsList', { withCredentials: true } )
             .then( ( res ) =>
             {
                 console.log( res );

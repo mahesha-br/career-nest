@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { ToastContainer,toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import API from '../../utils/api';
 
 
 const Post = ( { profile, item, key, personalData } ) =>
@@ -26,7 +27,7 @@ const Post = ( { profile, item, key, personalData } ) =>
         e.preventDefault();
         if(commentText.trim().length===0)
             return toast.error("Please enter comment")
-        await axios.post(`http://localhost:4000/api/comment`,{postId:item?._id,comment:commentText},{withCredentials:true})
+        await API.post(`/api/comment`,{postId:item?._id,comment:commentText},{withCredentials:true})
         .then((res=>{
            setComments([res.data.comment,...comments]);
 
@@ -58,7 +59,7 @@ const Post = ( { profile, item, key, personalData } ) =>
 
     const handleLikeFunc = async () =>
     {
-        await axios.post( 'http://localhost:4000/api/post/likeDislike', { postId: item?._id }, { withCredentials: true } )
+        await API.post( '/api/post/likeDislike', { postId: item?._id }, { withCredentials: true } )
             .then( res =>
             {
                 if ( liked )
@@ -86,7 +87,7 @@ const Post = ( { profile, item, key, personalData } ) =>
         // If closed, open and fetch comments
         setComment(true);
         try {
-            const resp = await axios.get(`http://localhost:4000/api/comment/${item?._id}`);
+            const resp = await API.get(`/api/comment/${item?._id}`);
             setComments(resp.data.comments);
         } catch (err) {
             console.log(err);

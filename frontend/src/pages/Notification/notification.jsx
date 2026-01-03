@@ -4,6 +4,7 @@ import ProfileCard from '../../components/ProfileCard/profileCard';
 import Card from '../../components/Card/card';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API from '../../utils/api';
 
 const Notification = () =>
 {
@@ -13,7 +14,7 @@ const Notification = () =>
     const [ notifications, setNotifications ] = useState( [] );
 
     const fetchNotificationData = async () => {
-        await axios.get( 'http://localhost:4000/api/notification', { withCredentials: true } )
+        await API.get( '/api/notification', { withCredentials: true } )
             .then( res =>
             {
                 console.log( res.data.notifications );
@@ -26,7 +27,7 @@ const Notification = () =>
         };
 
         const handleOnClickNotification = async(item)=>{
-            await axios.put('http://localhost:4000/api/notification/isRead',{notificationId:item._id},{withCredentials:true})
+            await API.put('/api/notification/isRead',{notificationId:item._id},{withCredentials:true})
             .then(res=>{
                  if(item.type==="comment"){
                     navigate(`/profile/${ownData?._id}/activities/${item.postId}`)

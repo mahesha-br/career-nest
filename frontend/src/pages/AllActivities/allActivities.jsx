@@ -6,6 +6,7 @@ import Card from '../../components/Card/card';
 import Post from '../../components/Post/post';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import API from '../../utils/api';
 
 const AllActivities = () =>
 {
@@ -18,7 +19,7 @@ const AllActivities = () =>
 
     const fetchDataOnLoad = async () =>
     {
-        await axios.get( `http://localhost:4000/api/post/getAllPostForUser/${ id }` )
+        await API.get( `/api/post/getAllPostForUser/${ id }` )
             .then( res =>
             {
                 console.log( res );

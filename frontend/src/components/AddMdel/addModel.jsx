@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ImageIcon from '@mui/icons-material/Image';
 import { ToastContainer,toast } from 'react-toastify';
 import axios from 'axios';
+import API from '../../utils/api';
 
 const AddModel = (props) => {
 
@@ -14,7 +15,7 @@ const AddModel = (props) => {
   const handlePost=async()=>{
       if(desc.trim().length===0 & !imageUrl)
         return toast.error("you must enter atlest one field");
-      await axios.post('http://localhost:4000/api/post',{desc:desc,imageLink:imageUrl},{withCredentials:true})
+      await API.post('/api/post',{desc:desc,imageLink:imageUrl},{withCredentials:true})
       .then((res=>{
         window.location.reload();
 

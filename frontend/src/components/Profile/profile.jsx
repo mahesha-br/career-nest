@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import API from '../../utils/api';
 
 const Profile = () =>
 {
@@ -57,9 +58,9 @@ const Profile = () =>
         try
         {
             const [ userDatas, postDatas, ownDatas ] = await Promise.all( [
-                axios.get( `http://localhost:4000/api/auth/user/${ id }` ),
-                axios.get( `http://localhost:4000/api/post/getTop5Post/${ id }` ),
-                axios.get( 'http://localhost:4000/api/auth/self', { withCredentials: true } ),
+                API.get( `/api/auth/user/${ id }` ),
+                API.get( `/api/post/getTop5Post/${ id }` ),
+                API.get( '/api/auth/self', { withCredentials: true } ),
             ] );
 
             setUserData(userDatas.data.user );
@@ -123,7 +124,7 @@ const Profile = () =>
 
     const handleEditFunc = async ( data ) =>
     {
-        await axios.put( `http://localhost:4000/api/auth/update`, { user: data }, { withCredentials: true } )
+        await API.put( `/api/auth/update`, { user: data }, { withCredentials: true } )
             .then( res =>
             {
                 window.location.reload();
@@ -176,7 +177,7 @@ const Profile = () =>
         if ( checkFriendStatus() === "Request Sent" ) return;
         if ( checkFriendStatus() === "Connect" )
         {
-            await axios.post( 'http://localhost:4000/api/auth/sendFriendReq', { reciever: userData?._id }, { withCredentials: true } )
+            await API.post( '/api/auth/sendFriendReq', { reciever: userData?._id }, { withCredentials: true } )
                 .then( res =>
                 {
                     toast.success( res.data.message );
@@ -193,7 +194,7 @@ const Profile = () =>
         }
         else if ( checkFriendStatus() === "Approve Request" )
         {
-            await axios.post( 'http://localhost:4000/api/auth/acceptFriendRequest', { friendId: userData?._id }, { withCredentials: true } )
+            await API.post( '/api/auth/acceptFriendRequest', { friendId: userData?._id }, { withCredentials: true } )
                 .then( res =>
                 {
                     toast.success( res.data.message );
@@ -209,7 +210,7 @@ const Profile = () =>
                 } );
         } else
         {
-            await axios.delete( `http://localhost:4000/api/auth/removeFromFriendList/${ userData?._id }`, { withCredentials: true } )
+            await API.delete( `/api/auth/removeFromFriendList/${ userData?._id }`, { withCredentials: true } )
                 .then( res =>
                 {
                     toast.success( res.data.message );
@@ -228,7 +229,7 @@ const Profile = () =>
 
     const handleLogout = async () =>
     {
-        await axios.post( 'http://localhost:4000/api/auth/logout', {}, { withCredentials: true } )
+        await API.post( '/api/auth/logout', {}, { withCredentials: true } )
             .then( res =>
             {
                 localStorage.clear();
@@ -245,7 +246,7 @@ const Profile = () =>
     {
         try
         {
-            let string = `http://localhost:5173/profile/${id}`;
+            let string = `/profile/${id}`;
             await navigator.clipboard.writeText( string );
             toast.success( 'copied to clipboard' );
 

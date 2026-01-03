@@ -11,6 +11,7 @@ import AddModel from '../../components/AddMdel/addModel';
 import Loader from '../../components/Loader/loader';
 import axios from 'axios';
 import { ToastContainer,toast } from 'react-toastify';
+import API from '../../utils/api';
 
 const Feeds = () =>
 {
@@ -19,7 +20,7 @@ const Feeds = () =>
     const [ addPostMOdel, setAddPostModel ] = useState( false );
 
     // const fetchSelfData =async() =>{
-    //     await axios.get('http://localhost:4000/api/auth/self',{withCredentials:true})
+    //     await API.get('/api/auth/self',{withCredentials:true})
     //     .then(res=>{
     //        setPersonalData(res.data.user)
     //     }).catch(err=>{
@@ -30,8 +31,8 @@ const Feeds = () =>
     const fetchData = async()=>{
     try {
         const [userData,postData]= await Promise.all([
-            axios.get('http://localhost:4000/api/auth/self',{withCredentials:true}),
-            axios.get('http://localhost:4000/api/post/getAllPost')
+            API.get('/api/auth/self',{withCredentials:true}),
+            API.get('/api/post/getAllPost')
         ]);
 
         setPersonalData(userData.data.user)

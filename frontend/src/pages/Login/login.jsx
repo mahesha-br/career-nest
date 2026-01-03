@@ -3,6 +3,7 @@ import { Link ,useNavigate} from 'react-router-dom';
 import GoogleLoginComponent from '../../components/GoogleLogin/googleLoginComponent';
 import { ToastContainer, toast } from "react-toastify";
 import axios from 'axios';
+import API from '../../utils/api';
 
 const Login = ( props ) =>
 {
@@ -20,7 +21,7 @@ const Login = ( props ) =>
             return toast.error( "please fill all credentials" );
         }
 
-        await axios.post( 'http://localhost:4000/api/auth/login',
+        await API.post( '/api/auth/login',
            
             loginField,{withCredentials:true})
             .then( ( res ) =>
