@@ -40,8 +40,8 @@ const Login = ( props ) =>
 
 
     return (
-        <div className='w-full flex flex-col items-center justify-center'>
-            <div className='w-[85%] md:w-[28%] shadow-xl rounded-sm box p-10'>
+        <div className='w-full min-h-[82vh] flex flex-col items-center justify-center'>
+            <div className='w-[85%] md:w-[28%] border border-neutral-200 shadow-xl rounded-sm box p-10'>
                 <div className='text-3xl'>Sign In</div>
                 <div className='my-5'>
                     <GoogleLoginComponent changeLoginValue={props.changeLoginValue}/>

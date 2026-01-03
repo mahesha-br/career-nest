@@ -55,7 +55,7 @@ useEffect(()=>{
     }
 
     return (
-        <div className='px-5 xl:px-10 py-8 flex gap-5 w-full mt-5 bg-gray-100'>
+        <div className='px-5 xl:px-10 py-8 flex gap-5 min-h-[78.1vh] md:min-h-[89vh] w-full mt-5 bg-gray-100'>
             {/*left side */ }
             <div className='w-[21%] sm:block sm:w-[23%] hidden py-5'>
                 <div className='h-fit'>
@@ -79,12 +79,12 @@ useEffect(()=>{
             </div>
 
             {/* middle side */ }
-            <div className='w-[80%] py-5 sm:-[50%]'>
+            <div className='w-[100%] md:w-[80%] py-5 sm:-[50%]'>
                 <div>
                     <Card padding={ 1 }>
                         <div className='flex gap-2 items-center'>
                             <img src={personalData?.profilePic}
-                                alt="" className='rounded-4xl w-13 h-13 border-white cursor-pointer' />
+                                alt="profile pic" className='rounded-4xl w-13 h-13 border-white cursor-pointer' />
                             <div onClick={ () => setAddPostModel( true ) }
                                 className='w-full border-1 py-3 px-3 rounded-3xl cursor-pointer hover:bg-gray-100'>
                                 Start a post</div>

@@ -14,9 +14,14 @@ import Profile from './components/Profile/profile';
 import AllActivities from './pages/AllActivities/allActivities';
 import SingleActivity from './pages/SingleActivity/singleActivity';
 import Notification from './pages/Notification/notification';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 
-import axios from "axios";
+
+import NotFoundPage from './components/NotFoundPage';
+import PrivacyPolicy from './components/PolicyPage';
+import AboutPage from './components/AboutPage';
+import ContactPage from './components/ContactPage';
+import { ToastContainer } from 'react-toastify';
 
 function App ()
 {
@@ -62,11 +67,13 @@ function App ()
 
         <Route path='/profile/:id/activities/:postId' element={isLogin ?<SingleActivity /> :<Navigate to={'/login'}/>} />
 
-        
-
-
+        <Route path='/privacypolicy' element={<PrivacyPolicy/>} />
+        <Route path='/about' element={<AboutPage/>} />
+        <Route path='/contact' element={<ContactPage/>} />
+        <Route path='*' element={<NotFoundPage/>} />
 
       </Routes>
+       <ToastContainer />
       <Footer />
     </div>
   );

@@ -6,57 +6,21 @@ const express = require('express');
 
 
 
-require('dotenv').config(); // Loads variables from .env file
+require('dotenv').config();
 
 const app = express();
 const PORT =process.env.PORT || 4000;
 
 
 // MongoDB connection
-// mongoose.connect(process.env.MONGO_URI)
-//   .then(() => {
-//     console.log('MongoDB Connected');
-//   })
-//   .catch(err => {
-//     console.error('MongoDB connection error:', err);
-//   });
-
-
-// ... keep your imports (express, mongoose, etc.)
-
-// 1. DATABASE CONNECTION LOGIC (REPLACE OLD CONNECT BLOCK)
-let isConnected = false; 
-
-const connectDB = async () => {
-  if (isConnected) return;
-
-  try {
-    const db = await mongoose.connect(process.env.MONGO_URI);
-    isConnected = db.connections[0].readyState;
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
     console.log('MongoDB Connected');
-  } catch (err) {
+  })
+  .catch(err => {
     console.error('MongoDB connection error:', err);
-    // Don't exit process in Vercel; just throw error so the request fails cleanly
-    throw err; 
-  }
-};
+  });
 
-// 2. MIDDLEWARES
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors({ origin: true, credentials: true }));
-
-// 3. ENSURE DB IS CONNECTED BEFORE ROUTES
-app.use(async (req, res, next) => {
-  try {
-    await connectDB();
-    next();
-  } catch (err) {
-    res.status(500).json({ error: "Database connection failed" });
-  }
-});
-
-// ... keep your app.use('/api/auth', UserRoutes) etc.
 
 
 

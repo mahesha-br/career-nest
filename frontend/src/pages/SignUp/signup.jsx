@@ -30,9 +30,9 @@ const Signup = (props) =>
     })
   }
   return (
-    <div className='w-full flex flex-col items-center justify-center'>
-      <div className='text-4xl mb-5'> Make the most od your professional life</div>
-      <div className='w-[85%] md:w-[28%] shadow-xl rounded-sm box p-10'>
+    <div className='w-full min-h-[82vh] flex flex-col items-center justify-center'>
+      <div className='text-4xl text-center font-bold mt-2 mb-5'> <h1 className='text-shadow-2xs text-shadow-neutral-500'>Make the most of your professional life</h1> </div>
+      <div className='w-[85%] md:w-[28%] border border-neutral-200 shadow-xl rounded-sm box p-10'>
         <div className='flex flex-col gap-4'>
           <div>
             <label htmlFor="email">Email</label>
