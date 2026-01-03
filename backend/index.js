@@ -23,10 +23,17 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({
-  credentials:true,
-  origin:"http://localhost:5173"
-}))
+// app.use(cors({
+//   credentials:true,
+//   origin:"http://localhost:5173"
+// }))
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true
+  })
+);
 
 
 const rootDir = path.resolve();
