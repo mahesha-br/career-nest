@@ -93,7 +93,7 @@ const Navbar2 = () => {
   }, [isMenuOpen]);
 
   return (
-    <div className="bg-white  flex justify-between py-2 px-3 fixed top-0 w-[100%] z-1000">
+    <div className="bg-white  flex justify-between py-2 px-2 md:px-6 fixed top-0 w-[100%] z-1000">
       <div className="flex gap-2 items-center">
         <Link
           to="/"
@@ -367,6 +367,8 @@ const Navbar2 = () => {
           </div>
         )}
       </div>
+
+
     </div>
   );
 };
