@@ -74,8 +74,15 @@ app.get("*", (_, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`server listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`server listening on port ${PORT}`);
+// });
 
-// module.exports = app;
+module.exports = app;
+
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+}

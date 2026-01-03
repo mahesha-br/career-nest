@@ -4,9 +4,8 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon index.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "node backend/index.js"
+    "build": "cd frontend && npm install && npm run build",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install"
   },
   "keywords": [],
   "author": "",
