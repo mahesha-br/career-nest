@@ -67,7 +67,7 @@ app.use('/api/message',MessageRoutes)
 // });
 
 
-app.get("*", (req, res) => {
+app.get("*", (_, res) => {
   res.sendFile(
     path.join(rootDir, "frontend", "dist", "index.html")
   );
