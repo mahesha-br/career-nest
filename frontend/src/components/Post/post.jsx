@@ -128,7 +128,7 @@ const Post = ({ profile, item, personalData }) => {
               onClick={() => setSeeMore((prev) => !prev)}
               className="cursor-pointer text-blue-600"
             >
-              {seeMore ? "See Less" : "See More"}
+              {seeMore ? " See Less" : " See More"}
             </span>
           )}
         </div>

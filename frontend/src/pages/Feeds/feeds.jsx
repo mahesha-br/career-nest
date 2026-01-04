@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileCard from "../../components/ProfileCard/profileCard";
 import Card from "../../components/Card/card";
 import VideocamIcon from "@mui/icons-material/Videocam";
@@ -9,7 +9,6 @@ import Post from "../../components/Post/post";
 import Model from "../../components/Model/model";
 import AddModel from "../../components/AddMdel/addModel";
 import Loader from "../../components/Loader/loader";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import API from "../../utils/api";
 
@@ -17,17 +16,10 @@ const Feeds = () => {
   const [personalData, setPersonalData] = useState(null);
   const [post, setPost] = useState([]);
   const [addPostMOdel, setAddPostModel] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // const fetchSelfData =async() =>{
-  //     await API.get('/api/auth/self',{withCredentials:true})
-  //     .then(res=>{
-  //        setPersonalData(res.data.user)
-  //     }).catch(err=>{
-  //         console.error('API error',err)
-  //         toast.error(err?.response?.data?.error)
-  //     })
-  // }
   const fetchData = async () => {
+    setIsLoading(true);
     try {
       const [userData, postData] = await Promise.all([
         API.get("/api/auth/self", { withCredentials: true }),
@@ -38,16 +30,17 @@ const Feeds = () => {
       localStorage.setItem("userInfo", JSON.stringify(userData.data.user));
       setPost(postData.data.posts);
     } catch (err) {
-      console.log("now error:", err);
+      console.log("API error:", err);
       toast.error(err?.response?.data?.error);
-      if (err?.response?.data?.error == "No token,authorization denied") {
+      if (err?.response?.data?.error === "No token,authorization denied") {
         localStorage.setItem("isLogin", "false");
       }
+    } finally {
+      setIsLoading(false); // stop loading after API call
     }
   };
 
   useEffect(() => {
-    //fetchSelfData()
     fetchData();
   }, []);
 
@@ -55,9 +48,17 @@ const Feeds = () => {
     setAddPostModel((prev) => !prev);
   };
 
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-[78vh] flex items-center justify-center">
+        <Loader /> {/* show loader while data is fetching */}
+      </div>
+    );
+  }
+
   return (
     <div className="px-5 xl:px-10 py-8 flex gap-5 min-h-[78.1vh] md:min-h-[89vh] w-full mt-5 md:mt-8 bg-gray-100">
-      {/*left side */}
+      {/* left side */}
       <div className="w-[21%] sm:block sm:w-[23%] hidden py-5">
         <div className="h-fit">
           <ProfileCard data={personalData} />
@@ -122,15 +123,17 @@ const Feeds = () => {
             </div>
           </Card>
         </div>
+
         <div className="border-b-1 border-gray-400 w-[100%] my-5" />
+
         <div className="w-full flex flex-col gap-5">
-          {post.map((item, index) => {
-            return <Post item={item} key={index} personalData={personalData} />;
-          })}
+          {post.map((item, index) => (
+            <Post item={item} key={index} personalData={personalData} />
+          ))}
         </div>
       </div>
 
-      {/*right side */}
+      {/* right side */}
       <div className="w-[26%] py-5 hidden md:block">
         <div>
           <Card padding={1}>
@@ -141,7 +144,7 @@ const Feeds = () => {
               <div className="text-xs text-gray-300">2h ago</div>
             </div>
             <div className="my-1">
-              <div className="text:md">Forign investments surge agin</div>
+              <div className="text:md">Foreign investments surge again</div>
               <div className="text-xs text-gray-300">3h ago</div>
             </div>
           </Card>
@@ -150,6 +153,7 @@ const Feeds = () => {
           <Advertisement />
         </div>
       </div>
+
       {addPostMOdel && (
         <Model closeModel={handleOpenPostModel} title="">
           <AddModel personalData={personalData} />
