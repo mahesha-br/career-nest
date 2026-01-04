@@ -269,7 +269,7 @@ const Navbar2 = () => {
                 </div>
               </Link>
               <Link
-              onClick={toggleMenu}
+                onClick={toggleMenu}
                 to={"/myNetwork"}
                 className="flex flex-col items-center cursor-pointer"
               >
@@ -288,7 +288,7 @@ const Navbar2 = () => {
                 </div>
               </Link>
               <Link
-              onClick={toggleMenu}
+                onClick={toggleMenu}
                 to={"/resume"}
                 className="flex flex-col items-center cursor-pointer"
               >
@@ -306,7 +306,7 @@ const Navbar2 = () => {
                 </div>
               </Link>
               <Link
-              onClick={toggleMenu}
+                onClick={toggleMenu}
                 to={"/messages"}
                 className="flex flex-col items-center cursor-pointer"
               >
@@ -324,11 +324,11 @@ const Navbar2 = () => {
                 </div>
               </Link>
               <Link
-              onClick={toggleMenu}
+                onClick={toggleMenu}
                 to={"/notification"}
                 className="flex flex-col items-center cursor-pointer"
               >
-                <div>
+                <div className="relative">
                   <NotificationsNoneIcon
                     sx={{
                       color:
@@ -338,7 +338,7 @@ const Navbar2 = () => {
                     }}
                   />
                   {notificationCount > 0 && (
-                    <span className="p-1 rounded-full bg-red-700 text-white">
+                    <span className="size-5 top-0 left-4.5 flex items-center justify-center  absolute rounded-full bg-red-700 text-white">
                       {notificationCount}
                     </span>
                   )}
@@ -352,7 +352,7 @@ const Navbar2 = () => {
                 </div>
               </Link>
               <Link
-              onClick={toggleMenu}
+                onClick={toggleMenu}
                 to={`/profile/${userData?._id}`}
                 className="flex flex-col items-center cursor-pointer"
               >
@@ -367,8 +367,6 @@ const Navbar2 = () => {
           </div>
         )}
       </div>
-
-
     </div>
   );
 };

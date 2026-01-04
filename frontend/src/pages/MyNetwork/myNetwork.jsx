@@ -53,24 +53,24 @@ const MyNetwork = () => {
   return (
     <div className='px-5 xl:px-10 py-8 flex flex-col gap-5 w-full mt-5 bg-gray-100'>
       
-      <div className='py-4 px-10 border-gray-400 w-full justify-between my-5 text-xl bg-white rounded-xl flex items-center'>
-        <div>{text}</div>
-        <div className='flex gap-3'>
+      <div className='py-4 px-2 md:px-10 border-gray-400 w-full justify-between my-5 text-lg md:text-xl bg-white rounded-xl flex flex-col gap-4 md:flex-row md:gap-0 items-center'>
+        <div className='font-semibold'>{text}</div>
+        <div className='flex-col md:flex-row flex items-center gap-3'>
           <button 
             onClick={handleFriends} 
-            className={`p-1 cursor-pointer border-1 rounded-lg border-gray-300 ${text === "Catch up with friends" ? 'bg-blue-800 text-white' : ''}`}>
+            className={`p-1 px-2 w-full md:w-fit cursor-pointer border-1 rounded-lg border-gray-300 ${text === "Catch up with friends" ? 'bg-blue-800 text-white' : ''}`}>
             Friends
           </button>
           <button 
             onClick={handlePending} 
-            className={`p-1 cursor-pointer border-1 rounded-lg border-gray-300 ${text === "Pending Request" ? 'bg-blue-800 text-white' : ''}`}>
+            className={`p-1 px-2 w-full md:w-fit cursor-pointer border-1 rounded-lg border-gray-300 ${text === "Pending Request" ? 'bg-blue-800 text-white' : ''}`}>
             Pending Request
           </button>
         </div>
       </div>
 
 
-      <div className='flex h-[80vh] w-full gap-7 flex-wrap items-start justify-center'>
+      <div className='flex h-[70vh] md:h-[80vh] w-full gap-7 flex-wrap items-start justify-center'>
         {isLoading ? (
           renderSkeleton()
         ) : data.length === 0 ? (

@@ -53,20 +53,18 @@ const Notification = () =>
 
     return (
         <div className='px-5 xl:px-10 py-8 flex gap-5 w-full mt-5 bg-gray-100'>
-            {/*left side */ }
-            <div className='w-[21%] sm:block sm:w-[23%] hidden py-5'>
+
+            <div className='w-[21%] mt-5 sm:block sm:w-[23%] hidden py-5'>
                 <div className='h-fit'>
                     <ProfileCard data={ ownData } />
                 </div>
 
             </div>
 
-            {/* middle side */ }
-            <div className='w-[80%] py-5 sm:-[50%] '>
+            <div className='w-[80%] mt-5 py-5 sm:-[50%] '>
                 <div>
                     <Card padding={ 0 }>
                         <div className='w-full'>
-                            {/*for each notification */ }
 
                             {
                                 notifications.map( ( item, index ) =>
