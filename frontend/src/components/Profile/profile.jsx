@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Advertisement from '../Advertisement/advertisement';
 import Card from '../../components/Card/card';
 import EditIcon from '@mui/icons-material/Edit';
@@ -13,7 +13,6 @@ import MessageModal from '../MessageModal/messageModal';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import API from '../../utils/api';
@@ -76,8 +75,8 @@ const Profile = () =>
         } catch ( error )
         {
             console.log( error );
-            alert( "something went Wrong" );
-            //toast.error( err?.response?.data?.error );
+            // alert( "something went Wrong" );
+            toast.error( err?.response?.data?.error );
         }
     };
 
