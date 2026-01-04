@@ -205,7 +205,7 @@ const Navbar2 = () => {
         </Link>
         <Link
           to={"/notification"}
-          className="flex flex-col items-center cursor-pointer"
+          className="flex relative flex-col items-center cursor-pointer"
         >
           <div>
             <NotificationsNoneIcon
@@ -214,7 +214,7 @@ const Navbar2 = () => {
               }}
             />
             {notificationCount > 0 && (
-              <span className="p-1 rounded-full bg-red-700 text-white">
+              <span className="size-5 top-0 right-3 flex items-center justify-center  absolute rounded-full bg-red-700 text-white">
                 {notificationCount}
               </span>
             )}
