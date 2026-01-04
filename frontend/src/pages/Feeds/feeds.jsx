@@ -36,7 +36,7 @@ const Feeds = () => {
         localStorage.setItem("isLogin", "false");
       }
     } finally {
-      setIsLoading(false); // stop loading after API call
+      setIsLoading(false);
     }
   };
 
@@ -51,7 +51,7 @@ const Feeds = () => {
   if (isLoading) {
     return (
       <div className="w-full min-h-[78vh] flex items-center justify-center">
-        <Loader /> {/* show loader while data is fetching */}
+        <FeedsSkeleton />
       </div>
     );
   }
@@ -165,3 +165,39 @@ const Feeds = () => {
 };
 
 export default Feeds;
+
+
+const FeedsSkeleton = () => {
+  return (
+    <div className="px-5 xl:px-10 py-8 flex gap-5 min-h-[78.1vh] md:min-h-[89vh] w-full mt-5 md:mt-14 bg-gray-100 animate-pulse">
+      
+
+      <div className="w-[21%] sm:block sm:w-[23%] hidden py-5 md:flex flex-col gap-5">
+        <div className="h-40 bg-gray-300 rounded-xl" />
+        <div className="h-24 bg-gray-300 rounded-xl" /> 
+      </div>
+
+      <div className="w-[100%] md:w-[80%] flex flex-col gap-5">
+        <div className="h-20 bg-gray-300 rounded-xl" /> 
+
+        {[...Array(3)].map((_, i) => (
+          <div key={i} className="bg-white p-5 rounded-xl flex flex-col gap-3 shadow">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gray-300 rounded-full" />
+              <div className="flex-1 h-4 bg-gray-300 rounded" />
+            </div>
+            <div className="h-4 bg-gray-300 rounded w-full" />
+            <div className="h-4 bg-gray-300 rounded w-5/6" />
+            <div className="h-40 bg-gray-300 rounded" /> 
+          </div>
+        ))}
+      </div>
+
+      <div className="w-[26%] py-5 hidden md:flex flex-col gap-5">
+        <div className="h-24 bg-gray-300 rounded-xl" /> 
+        <div className="h-64 bg-gray-300 rounded-xl" />
+      </div>
+    </div>
+  );
+};
+
