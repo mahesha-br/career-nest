@@ -22,11 +22,16 @@ import PrivacyPolicy from './components/PolicyPage';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
 import { ToastContainer } from 'react-toastify';
+import useUnauthorizedRedirect from "./hooks/useUnauthorizedRedirect";
+
 
 function App ()
 {
   //const isLogin = false;
   const [isLogin,setIsLogin]=useState(localStorage.getItem('isLogin'))
+
+  useUnauthorizedRedirect(setIsLogin);
+
 
   const changeLoginValue = (val)=>{
     setIsLogin(val)

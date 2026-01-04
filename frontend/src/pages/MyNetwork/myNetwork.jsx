@@ -21,14 +21,14 @@ const MyNetwork = () =>
 
     const fetchFriendList = async () =>
     {
-        await API.get( 'API/api/auth/friendsList', { withCredentials: true } )
+        await API.get( '/api/auth/friendsList', { withCredentials: true } )
             .then( ( res ) =>
             {
                 console.log( res );
                 setData( res.data.friends );
             } ).catch( err =>
             {
-                console.log( err );
+                console.log("now error", err );
                 alert( "Something Went Wrong" );
             } );
     };

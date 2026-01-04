@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import API from "../../utils/api";
 
-const Post = ({ profile, item, key, personalData }) => {
+const Post = ({ profile, item, personalData }) => {
   const [seeMore, setSeeMore] = useState(false);
   const [comment, setComment] = useState(false);
   const [comments, setComments] = useState([]);
@@ -210,7 +210,7 @@ const Post = ({ profile, item, key, personalData }) => {
           <div className="w-full p-4">
             {comments.map((item, index) => {
               return (
-                <div className="my-4">
+                <div key={index} className="my-4">
                   <Link
                     to={`/profile/${item?.user?._id}`}
                     className="flex gap-2"

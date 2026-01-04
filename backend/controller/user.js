@@ -8,9 +8,9 @@ const NotificationModal = require( '../models/notification' );
 
 
 const cookieOptions = {
-    httpOnly: true,
-    secure: false,//set true in production
-    sameSite: 'Lax'//set none in production
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
 };
 
 const client = new OAuth2Client( process.env.GOOGLE_CLIENT_ID );
@@ -49,9 +49,6 @@ exports.loginThroughGmail = async ( req, res ) =>
         res.status( 500 ).json( { error: 'Server error', message: error.message } ); // ✅ Fixed here
     }
 };
-
-
-
 
 exports.register = async ( req, res ) =>
 {
@@ -157,10 +154,26 @@ exports.getProfileById = async ( req, res ) =>
     }
 };
 
-exports.logout = async ( req, res ) =>
-{
-    res.clearCookie( 'token', cookieOptions ).json( { message: 'Logged out successfully' } );
+exports.logout = async (req, res) => {
+  try {
+    const token = req.cookies?.token;
+
+    if (token) {
+      res.clearCookie("token", cookieOptions);
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Logged out successfully",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Logout failed",
+    });
+  }
 };
+
 
 exports.findUser = async ( req, res ) =>
 {
@@ -283,7 +296,6 @@ exports.acceptFriendRequest = async (req, res) => {
         res.status(500).json({ error: 'Server error', message: error.message });
     }
 };
-
 
 exports.getFriendsList = async(req,res)=>{
     try {

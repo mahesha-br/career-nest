@@ -93,7 +93,7 @@ const Navbar2 = () => {
   }, [isMenuOpen]);
 
   return (
-    <div className="bg-white  flex justify-between py-2 px-2 md:px-6 fixed top-0 w-[100%] z-1000">
+    <div className="bg-white  flex justify-between py-2 px-2 md:px-4 lg:px-6 fixed top-0 w-[100%] z-1000">
       <div className="flex gap-2 items-center">
         <Link
           to="/"
@@ -110,7 +110,7 @@ const Navbar2 = () => {
             onChange={(e) => {
               setSearchTerm(e.target.value);
             }}
-            className="searchInput w-40 max-w-50 md:max-w-120 md:w-70 bg-gray-100 rounded-sm h-10 px-4"
+            className="searchInput w-40 max-w-50  md:max-w-120 md:w-70 bg-gray-100 rounded-sm h-10 px-4"
             placeholder="Search...."
           />
 
@@ -140,7 +140,7 @@ const Navbar2 = () => {
         </div>
       </div>
 
-      <div className="hidden gap-10 md:flex">
+      <div className="hidden md:gap-4 lg:gap-10 lg:flex">
         <Link
           to={"/feeds"}
           className="flex flex-col items-center cursor-pointer"
@@ -232,21 +232,21 @@ const Navbar2 = () => {
           className="flex flex-col items-center cursor-pointer"
         >
           <img
-            className="w-8 h-8 rounded-full"
+            className="w-8 h-8 rounded-full shrink-0"
             src={userData?.profilePic}
-            alt=""
+            alt={userData?.f_name}
           />
           <div className="text-sm text-gray-500">Me</div>
         </Link>
       </div>
 
-      <div className="flex md:hidden">
+      <div className="flex lg:hidden">
         <button onClick={toggleMenu} className="px-2">
           <MenuIcon />
         </button>
         {isMenuOpen && (
           <div className="absolute flex justify-end inset-0 w-screen h-screen bg-black/10 backdrop-blur-[0.8px]">
-            <div className="w-[70%] transition-transform ease-in-out relative h-full bg-neutral-200 border-l border-neutral-300 flex flex-col items-center py-12 gap-4">
+            <div className="w-[70%] md:w-[50%] transition-transform ease-in-out relative h-full bg-neutral-200 border-l border-neutral-300 flex flex-col items-center py-12 gap-4">
               <button onClick={toggleMenu} className="absolute right-5 top-4">
                 <ClearIcon />
               </button>
