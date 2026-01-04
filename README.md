@@ -1,4 +1,4 @@
-# 📌 Career-Nest
+# Career-Nest
 
 Career-Nest is a full-stack social media web application built using the **MERN stack** (MongoDB, Express.js, React, Node.js).  
 It allows users to connect, share posts, interact through comments and likes, follow other users, and communicate via chat.
@@ -8,7 +8,7 @@ It allows users to connect, share posts, interact through comments and likes, fo
 
 ---
 
-## 📘 Table of Contents
+## Table of Contents
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -22,7 +22,7 @@ It allows users to connect, share posts, interact through comments and likes, fo
 
 ---
 
-## 🚀 Features
+## Features
 
 - User authentication (Signup / Login)
 - Create, like, and comment on posts
@@ -34,7 +34,7 @@ It allows users to connect, share posts, interact through comments and likes, fo
 
 ---
 
-## 💻 Tech Stack
+## Tech Stack
 
 ### Frontend
 - React (Vite)
@@ -52,14 +52,14 @@ It allows users to connect, share posts, interact through comments and likes, fo
 
 ---
 
-## 📸 Screenshot
+## Screenshot
 
 ![](/frontend/public/career_nest.png)
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
-### 📌 Prerequisites
+### Prerequisites
 
 - Node.js (v14 or above)
 - npm
@@ -87,7 +87,7 @@ cd ../frontend
 npm install
 ```
 
-### ⚙️ Environment Variables
+### Environment Variables
 
 Create a `.env` file in the `backend` folder:
 
@@ -114,7 +114,7 @@ Open your browser and navigate to:
 http://localhost:5173
 ```
 
-### 📡 API Routes
+### API Routes
 
 Base URL: `/api`
 
@@ -130,7 +130,7 @@ Base URL: `/api`
 | POST   | `/message/send` | Send message        |
 
 
-### 📁 Project Structure
+### Project Structure
 
 ```
 career-nest/
@@ -151,7 +151,7 @@ career-nest/
 
 This project is licensed under the MIT License.
 
-📬 Contact
+Contact
 
 `Mahesha BR`
 
