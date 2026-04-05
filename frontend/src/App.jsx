@@ -28,7 +28,7 @@ import useUnauthorizedRedirect from "./hooks/useUnauthorizedRedirect";
 function App ()
 {
   //const isLogin = false;
-  const [isLogin,setIsLogin]=useState(localStorage.getItem('isLogin'))
+  const [isLogin, setIsLogin] = useState(localStorage.getItem('isLogin') === 'true');
 
   useUnauthorizedRedirect(setIsLogin);
 
