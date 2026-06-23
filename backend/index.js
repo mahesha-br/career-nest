@@ -87,10 +87,12 @@ app.use('/api/message',MessageRoutes)
 // });
 
 
-app.get("*", (_, res) => {
-  res.sendFile(
-    path.join(rootDir, "frontend", "dist", "index.html")
-  );
+app.get("*", (req, res) => {
+  const indexPath = path.join(rootDir, "frontend", "dist", "index.html");
+  if (require('fs').existsSync(indexPath)) {
+    return res.sendFile(indexPath);
+  }
+  return res.status(404).json({ error: "API Route Not Found" });
 });
 
 // Start server
