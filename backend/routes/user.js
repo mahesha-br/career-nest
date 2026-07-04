@@ -11,6 +11,7 @@ router.get('/status', (req, res) => {
         jwtPrivateKeyDefined: !!process.env.JWT_PRIVATE_KEY,
         dbState: mongoose.connection.readyState, // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
         dbHost: mongoose.connection.host,
+        dbError: global.dbError,
     });
 });
 

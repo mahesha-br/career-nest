@@ -13,13 +13,20 @@ const PORT =process.env.PORT || 4000;
 
 
 // MongoDB connection
+global.dbError = null;
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('MongoDB Connected');
+    global.dbError = null;
   })
   .catch(err => {
     console.error('MongoDB connection error:', err);
+    global.dbError = err.message || err.toString();
   });
+
+mongoose.connection.on('error', err => {
+  global.dbError = err.message || err.toString();
+});
 
 
 
