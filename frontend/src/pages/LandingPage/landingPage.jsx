@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import GoogleLoginComponent from '../../components/GoogleLogin/googleLoginComponent';
 
 const LandingPage = (props) =>
 {
@@ -8,13 +7,16 @@ const LandingPage = (props) =>
         <div className='my-4 min-h-[78.2vh] py-[50px] md:pl-[120px] px-5 md:flex justify-between'>
             <div className='md:w-[40%]'>
                 <div className='text-4xl mx-auto text-gray-800 font-medium text-center'>Welcome To Your Professional Community</div>
-                <div className='my-3 flex mx-auto mt-[20px] bg-white gap-2 rounded-3xl w-[70%] text-black cursor-pointer'>
-                    <GoogleLoginComponent changeLoginValue={props.changeLoginValue}/>
-                </div>
-                <Link to="/login" className='flex mx-auto mt-[20px] py-2 px-2 bg-white gap-2 rounded-3xl items-center w-[70%] 
-                justify-center text-black border-1 hover:bg-gray-200 cursor-pointer'>
-                    Sign in with email
+                
+                <Link to="/login" className='flex mx-auto mt-[40px] py-3 px-2 bg-blue-800 hover:bg-blue-900 text-white font-medium rounded-3xl items-center w-[70%] 
+                justify-center cursor-pointer text-xl shadow-md'>
+                    Sign In
                 </Link>
+                <Link to="/signup" className='flex mx-auto mt-[20px] py-3 px-2 bg-white text-black border border-neutral-300 font-medium rounded-3xl items-center w-[70%] 
+                justify-center hover:bg-gray-100 cursor-pointer text-xl shadow-sm'>
+                    Join Now / Sign Up
+                </Link>
+
                 <div className='mx-auto mb-4 text-sm w-[70%] text-center text-balance mt-6'>By clicking Continue to join or sign in,you agree to
                     <span className='text-blue-800 cursor-pointer hover:underline'> CareerNest's User Agrement</span>,
                     <span className='text-blue-800 cursor-pointer hover:underline'>Privacy Policy</span>,and
