@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import GoogleLoginComponent from '../../components/GoogleLogin/googleLoginComponent';
 import { ToastContainer, toast } from 'react-toastify';
 import API from '../../utils/api';
 
@@ -104,14 +103,6 @@ const Signup = (props) => {
             {isLoading ? 'Registering...' : 'Register'}
           </div>
         </div>
-
-        <div className='flex items-center gap-2'>
-          <div className='border-b-1 border-gray-400 w-[45%]' />
-          <div>or</div>
-          <div className='border-b-1 border-gray-400 w-[45%] my-6' />
-        </div>
-
-        <GoogleLoginComponent changeLoginValue={props.changeLoginValue} />
       </div>
 
       <div className='mt-4 mb-10'>

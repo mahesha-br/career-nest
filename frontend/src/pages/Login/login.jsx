@@ -1,6 +1,5 @@
 import  { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import GoogleLoginComponent from '../../components/GoogleLogin/googleLoginComponent';
 import { ToastContainer, toast } from "react-toastify";
 import API from '../../utils/api';
 
@@ -47,17 +46,7 @@ const Login = (props) => {
   return (
     <div className='w-full min-h-[82vh] flex flex-col items-center justify-center'>
       <div className='w-[85%] md:w-[28%] border border-neutral-200 shadow-xl rounded-sm box p-10'>
-        <div className='text-3xl'>Sign In</div>
-
-        <div className='my-5'>
-          <GoogleLoginComponent changeLoginValue={props.changeLoginValue} />
-        </div>
-
-        <div className='flex items-center gap-2'>
-          <div className='border-b-1 border-gray-400 w-[45%]' />
-          <div>or</div>
-          <div className='border-b-1 border-gray-400 w-[45%] my-6' />
-        </div>
+        <div className='text-3xl mb-6'>Sign In</div>
 
         <div className='flex flex-col gap-4'>
           <div>
