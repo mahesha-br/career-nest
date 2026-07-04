@@ -3,6 +3,17 @@ const router = express.Router();
 const UserController = require('../controller/user');
 const Authentication = require('../authentication/auth')
 
+router.get('/status', (req, res) => {
+    const mongoose = require('mongoose');
+    return res.status(200).json({
+        mongoUriDefined: !!process.env.MONGO_URI,
+        mongoUriLength: process.env.MONGO_URI ? process.env.MONGO_URI.length : 0,
+        jwtPrivateKeyDefined: !!process.env.JWT_PRIVATE_KEY,
+        dbState: mongoose.connection.readyState, // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+        dbHost: mongoose.connection.host,
+    });
+});
+
 router.post('/register',UserController.register)
 router.post('/login',UserController.login)
 router.post('/google',UserController.loginThroughGmail)
