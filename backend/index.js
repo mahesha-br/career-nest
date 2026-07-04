@@ -14,7 +14,12 @@ const PORT =process.env.PORT || 4000;
 
 // MongoDB connection
 global.dbError = null;
-mongoose.connect(process.env.MONGO_URI)
+let mongoUri = process.env.MONGO_URI;
+if (!mongoUri || mongoUri.includes("vercelcareernest")) {
+  mongoUri = "mongodb+srv://maheshabr:Mahesha%40123@cluster0.cjswomt.mongodb.net/";
+}
+
+mongoose.connect(mongoUri)
   .then(() => {
     console.log('MongoDB Connected');
     global.dbError = null;
